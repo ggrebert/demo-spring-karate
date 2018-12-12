@@ -1,0 +1,44 @@
+server:
+  port: 8080
+  compression:
+    enabled: true
+
+spring:
+  application:
+    name: flash-message
+
+info:
+  java:
+    version: ${java.version}
+    specification:
+      vendor: ${java.specification.vendor}
+      name: ${java.specification.name}
+      version: ${java.specification.version}
+    vm:
+      name: ${java.vm.name}
+      specification:
+        name: ${java.vm.specification.name}
+        vendor: ${java.vm.specification.vendor}
+      version: ${java.vm.version}
+    home: ${java.home}
+  os:
+    arch: ${os.arch}
+    name: ${os.name}
+    version: ${os.version}
+
+management:
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    root: 'WARN'
+    hibernate: 'DEBUG'
+    com:
+      netflix: 'OFF'
+    org.springframework:
+      amqp: 'WARN'
+      security: 'INFO'
+      web: 'INFO'
+    app: 'TRACE'

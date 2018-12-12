@@ -1,0 +1,6 @@
+{
+    "java.format.settings.url": "eclipse-formatter.xml",
+    "boot-java.change-detection.on": true,
+    "java.home": "C:\\PROJETS\\Program Files\\Java\\java-1.8.0-openjdk-1.8.0.171-1.b10.redhat.windows.x86_64",
+    "java.configuration.updateBuildConfiguration": "automatic"
+}

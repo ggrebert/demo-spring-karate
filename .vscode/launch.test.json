@@ -1,0 +1,30 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "demo",
+                "projectName": "demo",
+                "workingDirectory": "c:\\Users\\ggrebert\\Documents\\workspace\\communaute\\demo-spring-boot\\demo",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "demo",
+                "projectName": "demo",
+                "workingDirectory": "c:\\Users\\ggrebert\\Documents\\workspace\\communaute\\demo-spring-boot\\demo",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}
