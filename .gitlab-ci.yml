@@ -114,7 +114,6 @@ package mssql:
 code_quality:
   stage: security
   image: docker:stable
-  allow_failure: true
   services:
     - docker:stable-dind
   script:
@@ -136,7 +135,6 @@ code_quality:
 sast:
   stage: security
   image: docker:stable
-  allow_failure: true
   services:
     - docker:stable-dind
   script:
@@ -154,7 +152,6 @@ sast:
 dependency_scanning:
   stage: security
   image: docker:stable
-  allow_failure: true
   services:
     - docker:stable-dind
   script:
@@ -173,7 +170,6 @@ dependency_scanning:
 container_scanning:
   stage: security
   image: docker:stable
-  allow_failure: true
   services:
     - docker:stable-dind
   script:
@@ -195,3 +191,14 @@ container_scanning:
     paths: [gl-container-scanning-report.json]
   only:
     - master
+
+license_management:
+  stage: security
+  image:
+    name: "registry.gitlab.com/gitlab-org/security-products/license-management:$CI_SERVER_VERSION_MAJOR-$CI_SERVER_VERSION_MINOR-stable"
+    entrypoint: [""]
+  script:
+    - /run.sh analyze .
+  artifacts:
+    reports:
+      license_management: gl-license-management-report.json
