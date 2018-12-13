@@ -143,6 +143,20 @@
 				<activatedProperties>postgresql</activatedProperties>
 			</properties>
 		</profile>
+		<profile>
+			<id>mssql</id>
+			<dependencies>
+				<dependency>
+					<groupId>com.microsoft.sqlserver</groupId>
+					<artifactId>mssql-jdbc</artifactId>
+					<version>7.0.0.jre8</version>
+					<scope>runtime</scope>
+				</dependency>
+			</dependencies>
+			<properties>
+				<activatedProperties>mssql</activatedProperties>
+			</properties>
+		</profile>
 	</profiles>
 
 	<build>

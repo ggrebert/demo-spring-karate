@@ -69,3 +69,14 @@ spring:
     password: ${POSTGRES_PASSWORD}
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+---
+
+spring:
+  profiles: mssql
+  datasource:
+    url: jdbc:sqlserver://${MSSQL_HOST};databaseName=${MSSQL_DATABASE}
+    username: ${MSSQL_USER}
+    password: ${MSSQL_PASSWORD}
+  jpa:
+    database-platform: org.hibernate.dialect.SQLServerDialect
