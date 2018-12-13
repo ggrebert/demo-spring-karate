@@ -60,6 +60,7 @@ code_quality:
         --volume "$PWD":/code \
         --volume /var/run/docker.sock:/var/run/docker.sock \
         "registry.gitlab.com/gitlab-org/security-products/codequality:$SP_VERSION" /code
+  dependencies: []
   artifacts:
     paths: [gl-code-quality-report.json]
   only:
@@ -81,6 +82,7 @@ sast:
         --volume "$PWD:/code" \
         --volume /var/run/docker.sock:/var/run/docker.sock \
         "registry.gitlab.com/gitlab-org/security-products/sast:$SP_VERSION" /app/bin/run /code
+  dependencies: []
   artifacts:
     reports:
       sast: gl-sast-report.json
@@ -98,8 +100,11 @@ dependency_scanning:
         --volume "$PWD:/code" \
         --volume /var/run/docker.sock:/var/run/docker.sock \
         "registry.gitlab.com/gitlab-org/security-products/dependency-scanning:$SP_VERSION" /code
+  dependencies: []
   artifacts:
     paths: [ gl-dependency-scanning-report.json ]
+  only:
+    - master
 
 container_scanning:
   stage: security
@@ -121,6 +126,7 @@ container_scanning:
     - echo "Waiting for clair daemon to start"
     - while( ! wget -T 10 -q -O /dev/null http://docker:6060/v1/namespaces ) ; do sleep 1 ; echo -n "." ; if [ $retries -eq 10 ] ; then echo " Timeout, aborting." ; exit 1 ; fi ; retries=$(($retries+1)) ; done
     - ./clair-scanner -c http://docker:6060 --ip $(hostname -i) -r gl-container-scanning-report.json -l clair.log -w clair-whitelist.yml ${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_SLUG} || true
+  dependencies: []
   artifacts:
     paths: [gl-container-scanning-report.json]
   only:
