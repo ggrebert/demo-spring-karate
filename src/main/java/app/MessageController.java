@@ -34,49 +34,49 @@ class MessageController {
 	private static final Logger logger = LoggerFactory.getLogger(MessageController.class);
 
 	@Autowired
-    private MessageRepository repository;
+	private MessageRepository repository;
 
 	@GetMapping
 	public Iterable<MessageEntity> list() {
-        return repository.findAll();
+		return repository.findAll();
 	}
 
 	@PostMapping
 	@ApiResponses(value={
 		@ApiResponse(code = 201, message = "Message successfuly created")
 	})
-    public ResponseEntity<MessageEntity> create(@RequestBody MessageEntity message, UriComponentsBuilder ucBuilder) {
-        logger.trace("Creating new message");
+	public ResponseEntity<MessageEntity> create(@RequestBody MessageEntity message, UriComponentsBuilder ucBuilder) {
+		logger.trace("Creating new message");
 
-        try {
-            repository.save(message);
+		try {
+			repository.save(message);
 
-            HttpHeaders headers = new HttpHeaders();
+			HttpHeaders headers = new HttpHeaders();
 			headers.setLocation(ucBuilder.path("/flash-message/{id}").buildAndExpand(message.getId()).toUri());
 
 			logger.info("Message with id {} created.", message.getId());
 
-            return new ResponseEntity<>(message, headers, HttpStatus.CREATED);
-        }
-        catch(Exception e) {
-            logger.error("Unable to create message.", e);
+			return new ResponseEntity<>(message, headers, HttpStatus.CREATED);
+		}
+		catch(Exception e) {
+			logger.error("Unable to create message.", e);
 			throw new NotAcceptableStatusException("Unable to create message");
-        }
-    }
+		}
+	}
 
-    @GetMapping(path = "/{id}")
-    public ResponseEntity<MessageEntity> get(@PathVariable("id") UUID id) {
+	@GetMapping(path = "/{id}")
+	public ResponseEntity<MessageEntity> get(@PathVariable("id") UUID id) {
 		MessageEntity message = repository.findOneById(id);
 
 		if (message == null) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No message found");
 		}
 
-        return new ResponseEntity<>(message, HttpStatus.OK);
+		return new ResponseEntity<>(message, HttpStatus.OK);
 	}
 
 	@PutMapping(path = "/{id}")
-    public ResponseEntity<MessageEntity> update(
+	public ResponseEntity<MessageEntity> update(
 		@PathVariable("id") UUID id,
 		@RequestBody MessageEntity updated
 	) {
@@ -85,7 +85,7 @@ class MessageController {
 		MessageEntity message = repository.findOneById(id);
 
 		if (message == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No message found");
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No message found");
 		}
 
 		message.setActive(updated.isActive());
@@ -95,24 +95,24 @@ class MessageController {
 
 		logger.info("Message with id {} updated.", id);
 
-        return new ResponseEntity<>(message, HttpStatus.ACCEPTED);
+		return new ResponseEntity<>(message, HttpStatus.ACCEPTED);
 	}
 
 	@DeleteMapping(path = "/{id}")
 	public ResponseEntity<MessageEntity> delete(@PathVariable("id") UUID id) {
-        logger.trace("Deleting message {}.", id);
+		logger.trace("Deleting message {}.", id);
 
-        MessageEntity message = repository.findOneById(id);
+		MessageEntity message = repository.findOneById(id);
 
-        if (message == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No message found");
-        }
+		if (message == null) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No message found");
+		}
 
 		repository.delete(message);
 
 		logger.info("Message with id {} deleted.", id);
 
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
+	}
 
 }
