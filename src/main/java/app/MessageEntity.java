@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiModelProperty.AccessMode;
@@ -27,7 +28,8 @@ public class MessageEntity {
     @Id
 	@GeneratedValue(generator = "uuid2")
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")
-	@Column(name = "id", columnDefinition = "BINARY(16)")
+	@Column(name = "id")
+	@Type(type = "uuid-char")
 	@JsonProperty(value="@id", access=JsonProperty.Access.READ_ONLY)
 	@ApiModelProperty(notes="The generated message ID", accessMode= AccessMode.READ_ONLY, hidden=true)
 	@Setter(AccessLevel.NONE)

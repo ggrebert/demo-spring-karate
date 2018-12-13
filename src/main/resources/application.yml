@@ -8,7 +8,7 @@ spring:
     name: flash-message
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
   profiles:
     active: "@activatedProperties@"
 
@@ -56,3 +56,16 @@ spring:
     url: jdbc:mysql://${MYSQL_HOST}/${MYSQL_DATABASE}
     username: ${MYSQL_USER}
     password: ${MYSQL_PASSWORD}
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+
+---
+
+spring:
+  profiles: postgresql
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_HOST}/${POSTGRES_DB}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect

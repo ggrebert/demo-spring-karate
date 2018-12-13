@@ -82,15 +82,17 @@ Scenario: Wrong message
 
 Scenario: Not Found
 
-    Given path 'flash-message', '00000000-0000-0000-0000-000000000000'
+    * def uuid = 'd07e3517-9870-421a-aa1e-facb4a26f901'
+
+    Given path 'flash-message', uuid
     When method GET
     Then status 404
 
-    Given path 'flash-message', '00000000-0000-0000-0000-000000000000'
+    Given path 'flash-message', uuid
     When method Delete
     Then status 404
 
-    Given path 'flash-message', '00000000-0000-0000-0000-000000000000'
+    Given path 'flash-message', uuid
     And request { }
     When method PUT
     Then status 404
