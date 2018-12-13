@@ -16,6 +16,12 @@ Demo project to test Rest API with [karate](https://github.com/intuit/karate)
   mvn clean install -Pmysql
   ```
 
+* `PostgreSQL` database
+
+  ```bash
+  mvn clean install -Ppostgresql
+  ```
+
 __Reports :__
 
 * [coverage](/target/site/jacoco/index.html)
@@ -45,4 +51,10 @@ __Urls :__
 
   ```bash
   mvn -Dtest=KarateBench test -Pmysql
+  ```
+
+* `PostgreSQL` database
+
+  ```bash
+  mvn -Dtest=KarateBench test -Ppostgresql
   ```
