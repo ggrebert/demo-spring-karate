@@ -25,7 +25,7 @@ import lombok.Setter;
 @Setter
 public class MessageEntity {
 
-    @Id
+	@Id
 	@GeneratedValue(generator = "uuid2")
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")
 	@Column(name = "id")
@@ -33,13 +33,13 @@ public class MessageEntity {
 	@JsonProperty(value="@id", access=JsonProperty.Access.READ_ONLY)
 	@ApiModelProperty(notes="The generated message ID", accessMode= AccessMode.READ_ONLY, hidden=true)
 	@Setter(AccessLevel.NONE)
-    private UUID id;
+	private UUID id;
 
 	@NotNull
-    @Column(name="content", nullable=false)
-    private String content;
+	@Column(name="content", nullable=false)
+	private String content;
 
-    @Column(name="active", nullable=false)
+	@Column(name="active", nullable=false)
 	private boolean isActive = true;
 
 }
