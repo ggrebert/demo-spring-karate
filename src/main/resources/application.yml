@@ -80,3 +80,14 @@ spring:
     password: ${MSSQL_PASSWORD}
   jpa:
     database-platform: org.hibernate.dialect.SQLServerDialect
+
+---
+
+spring:
+  profiles: mariadb
+  datasource:
+    url: jdbc:mariadb://${MYSQL_HOST}/${MYSQL_DATABASE}
+    username: ${MYSQL_USER}
+    password: ${MYSQL_PASSWORD}
+  jpa:
+    database-platform: org.hibernate.dialect.MariaDB103Dialect

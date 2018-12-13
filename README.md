@@ -16,6 +16,12 @@ Demo project to test Rest API with [karate](https://github.com/intuit/karate)
   mvn clean install -Pmysql
   ```
 
+* `MariaDB` database
+
+  ```bash
+  mvn clean install -Pmariadb
+  ```
+
 * `PostgreSQL` database
 
   ```bash
@@ -57,6 +63,12 @@ __Urls :__
 
   ```bash
   mvn -Dtest=KarateBench test -Pmysql
+  ```
+
+* `MariaDB` database
+
+  ```bash
+  mvn -Dtest=KarateBench test -Pmariadb
   ```
 
 * `PostgreSQL` database
