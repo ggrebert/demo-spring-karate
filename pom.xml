@@ -157,6 +157,20 @@
 				<activatedProperties>mssql</activatedProperties>
 			</properties>
 		</profile>
+		<profile>
+			<id>mariadb</id>
+			<dependencies>
+				<dependency>
+					<groupId>org.mariadb.jdbc</groupId>
+					<artifactId>mariadb-java-client</artifactId>
+					<version>2.3.0</version>
+					<scope>runtime</scope>
+				</dependency>
+			</dependencies>
+			<properties>
+				<activatedProperties>mariadb</activatedProperties>
+			</properties>
+		</profile>
 	</profiles>
 
 	<build>

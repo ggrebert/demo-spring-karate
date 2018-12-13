@@ -70,6 +70,12 @@ build mysql:
   services:
     - mysql
 
+build mariadb:
+  <<: *build
+  services:
+    - name: mariadb
+      alias: mysql
+
 build postgresql:
   <<: *build
   services:
@@ -89,6 +95,11 @@ package mysql:
   <<: *package
   dependencies:
     - build mysql
+
+package mariadb:
+  <<: *package
+  dependencies:
+    - build mariadb
 
 package postgresql:
   <<: *package
