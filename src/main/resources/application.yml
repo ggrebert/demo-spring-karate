@@ -6,6 +6,11 @@ server:
 spring:
   application:
     name: flash-message
+  jpa:
+    hibernate:
+      ddl-auto: create
+  profiles:
+    active: "@activatedProperties@"
 
 info:
   java:
@@ -42,3 +47,12 @@ logging:
       security: 'INFO'
       web: 'INFO'
     app: 'TRACE'
+
+---
+
+spring:
+  profiles: mysql
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST}/${MYSQL_DATABASE}
+    username: ${MYSQL_USER}
+    password: ${MYSQL_PASSWORD}

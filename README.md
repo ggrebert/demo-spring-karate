@@ -4,9 +4,17 @@ Demo project to test Rest API with [karate](https://github.com/intuit/karate)
 
 ## Build
 
-```bash
-mvn clean install
-```
+* `H2` database
+
+  ```bash
+  mvn clean install
+  ```
+
+* `MySQL` database
+
+  ```bash
+  mvn clean install -Pmysql
+  ```
 
 __Reports :__
 
@@ -20,13 +28,21 @@ __Reports :__
 java -jar target/flash-message-dev.jar
 ```
 
-__Urls __:
+__Urls :__
 
 * [OpenAPI](http://127.0.0.1:8080/v2/api-docs)
 * [Swagger](http://127.0.0.1:8080/swagger-ui.html)
 
 ## Benchmark
 
-```bash
-mvn -Dtest=KarateBench test
-```
+* `H2` database
+
+  ```bash
+  mvn -Dtest=KarateBench test
+  ```
+
+* `MySQL` database
+
+  ```bash
+  mvn -Dtest=KarateBench test -Pmysql
+  ```

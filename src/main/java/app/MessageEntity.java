@@ -27,7 +27,7 @@ public class MessageEntity {
     @Id
 	@GeneratedValue(generator = "uuid2")
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")
-	@Column(name = "id", columnDefinition = "uuid")
+	@Column(name = "id", columnDefinition = "BINARY(16)")
 	@JsonProperty(value="@id", access=JsonProperty.Access.READ_ONLY)
 	@ApiModelProperty(notes="The generated message ID", accessMode= AccessMode.READ_ONLY, hidden=true)
 	@Setter(AccessLevel.NONE)
