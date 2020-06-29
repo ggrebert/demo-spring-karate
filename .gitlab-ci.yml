@@ -425,7 +425,7 @@ container_scanning:
     - if: $CI_COMMIT_BRANCH
 
 trivy:
-  stage: report
+  stage: check
   image: docker.sudouest.sii.fr/community/tools/docker
   services:
     - docker:dind
