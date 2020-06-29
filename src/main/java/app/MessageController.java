@@ -64,6 +64,11 @@ class MessageController {
 		}
 	}
 
+	@GetMapping(path = "/hello")
+	public String hello() {
+		return "world";
+	}
+
 	@GetMapping(path = "/{id}")
 	public ResponseEntity<MessageEntity> get(@PathVariable("id") UUID id) {
 		MessageEntity message = repository.findOneById(id);
