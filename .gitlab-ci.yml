@@ -163,18 +163,6 @@ brakeman-sast:
       exists:
         - 'config/routes.rb'
 
-eslint-sast:
-  extends: .sast-analyzer
-  image:
-    name: "$SECURE_ANALYZERS_PREFIX/eslint:$SAST_ANALYZER_IMAGE_TAG"
-  rules:
-    - if: $SAST_DISABLED
-      when: never
-    - if: $CI_COMMIT_BRANCH
-      exists:
-        - '**/*.html'
-        - '**/*.js'
-
 flawfinder-sast:
   extends: .sast-analyzer
   image:
