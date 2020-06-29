@@ -1,0 +1,36 @@
+version: "2"
+
+plugins:
+  sonar-java:
+    enabled: true
+    config:
+      tests_patterns:
+        - src/test/**
+      minimum_severity: info
+  fixme:
+    enabled: true
+  markdownlint:
+    enabled: true
+  checkstyle:
+    enabled: true
+  editorconfig:
+    enabled: true
+    channel: beta
+exclude_patterns:
+- config/
+- db/
+- dist/
+- features/
+- "**/node_modules/"
+- script/
+- "**/spec/"
+- "**/test/"
+- "**/tests/"
+- Tests/
+- "**/vendor/"
+- "**/*_test.go"
+- "**/*.d.ts"
+- "**/*.min.js"
+- "**/*.min.css"
+- "**/__tests__/"
+- "**/__mocks__/"
