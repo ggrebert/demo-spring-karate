@@ -66,9 +66,6 @@ stages:
     - docker build -t ${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_SLUG}-${profile} .
     - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" "$CI_REGISTRY" --password-stdin
     - docker push ${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_SLUG}-${profile}
-  only:
-    - master
-    - tags
 
 build h2:
   <<: *build
@@ -422,7 +419,7 @@ container_scanning:
   artifacts:
     reports:
       container_scanning: gl-container-scanning-report.json
-  dependencies: []
+  dependencies: ["build h2"]
   rules:
     - if: $CONTAINER_SCANNING_DISABLED
       when: never
